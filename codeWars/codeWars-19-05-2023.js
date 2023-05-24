@@ -5,6 +5,18 @@ function stringToArray(string) {
 }
 //   ||
 const stringToArray = string => string.split(" ");
+//   ||
+const stringToArray = (string) => {
+  const words = [''];
+  for (const letter of string) {
+    if (letter !== ' ') {
+      words[words.length-1] += letter;
+    } else {
+      words.push('');
+    }
+  }
+  return words;
+}
 
 
 // -------------------------------------------------- 2 ----------------------------------------------------------------
@@ -34,6 +46,7 @@ function min(arr, toReturn) {
 // *********************************************************************************************************************
 // -------------------------------------------------- 1* ----------------------------------------------------------------
 // A wolf in sheep's clothing                    https://www.codewars.com/kata/a-wolf-in-sheeps-clothing/train/javascript
+// not use reverse!!!!!
 function warnTheSheep(queue) {
     const sheepFlock = queue.reverse();
     return sheepFlock[0] === "wolf"
@@ -42,6 +55,12 @@ function warnTheSheep(queue) {
           (wolfPosition) => wolfPosition === "wolf"
         )}! You are about to be eaten by a wolf!`;
   }
+//   || best:
+function warnTheSheep(queue) {
+  const index = queue.indexOf('wolf');
+  return index === queue.length-1 ? "Pls go away and stop eating my sheep"
+  : `Oi! Sheep number ${queue.length-1-index}! You are about to be eaten by a wolf!`;
+}
   
 
 // -------------------------------------------------- 2* ----------------------------------------------------------------

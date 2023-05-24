@@ -5,12 +5,19 @@ class SmallestIntegerFinder {
         return Math.min(...args);
     }
 }
-
+// best:
+class SmallestIntegerFinder {
+    findSmallestInt(args) {
+        return args.reduce((min, el) => el < min ? el : min);
+    }
+}
 
 
 // -------------------------------------------------- 2 -------------------------------------------------------------------------------------
 // Geometry Basics: Circle Circumference in 2D      https://www.codewars.com/kata/geometry-basics-circle-circumference-in-2d/train/javascript
 const circleCircumference = circle => 2 * Math.PI * circle.radius;
+//  best:
+const circleCircumference = ({radius}) => 2 * Math.PI * radius;
 
 
 
@@ -30,8 +37,8 @@ function giveMeFive(obj) {
 // -------------------------------------------------- 4 -------------------------------------------------------------------------------------
 // Understanding closures - the basics                        https://www.codewars.com/kata/understanding-closures-the-basics/train/javascript
 function buildFun(n) {
-    let res = [];
-    for (let i = 0; i < n; i++) {
+    const res = [];
+    for (const i = 0; i < n; i++) {
         res.push(function () {
             return i;
         })
